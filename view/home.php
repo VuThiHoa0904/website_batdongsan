@@ -2,107 +2,7 @@
 	include('../view/header.php');
 //	include '../view/slideshow.php';
 ?>
-    <section class="main-content">
-	<article>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12">
-							<h3 class="title">Dự Án Nổi Bật</h3>
-							<div class="row">
-								<?php
-									$product = $x->get_duan();
-									$count1 = 0;
-									while ($set = $product -> fetch()):
-									$schedule = $set['schedule'];
-										$count1++;
-										if ($count1==11) {
-											break;
-										}
-								?>
-								<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="margin-bottom:30px;">
-									<a href="?action=duandetail&id=<?php echo $set[0] ?>"><div class="product-h">
-										<img src="images/duan/<?php echo $set['images'];?>">
-									</div></a>
 
-									<h3><a href="?action=duandetail&id=<?php echo $set[0] ?>"><?php echo $set[1];?></a></h3>
-									<span class="price"><?php echo $set['price'];?></span>
-									<p class="vitri"><?php echo $set['vitri'];?></p>
-									<div class="schedule">
-										<span><?php echo $schedule; ?>%</span>
-									</div>
-								</div>
-								<?php endwhile;?>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12">
-							<h3 class="title">Bất Động Sản Nổi Bật</h3>
-							<div class="row">
-								<?php
-									$product = $x->get_product();
-									$count1 = 0;
-									while ($set = $product -> fetch()):
-										$count1++;
-										if ($count1==11) {
-											break;
-										}
-								?>
-								<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3  bds-box" style="margin-bottom:30px;">
-									<a href="?action=productdetail&productid=<?php echo $set[0] ?>"><div class="product-h">
-										<img src="images/product/<?php echo $set[3];?>">
-									</div></a>
-
-									<h3><a href="?action=productdetail&productid=<?php echo $set[0] ?>"><?php echo $set[1];?></a></h3>
-									<span class="price"><?php echo $set[2];?></span>
-									<p class="vitri"><?php echo $set['vitri'];?></p>
-								</div>
-								<?php endwhile;?>
-							</div>
-						</div>
-						<div class="col-xs-12">
-							<h3 class="title">Tin tức mới nhất</h3>
-							<div class="row">
-								<?php
-									$tintuc = $x->get_tintuc();
-									$count1 = 0;
-									while ($set = $tintuc -> fetch()):
-										$count1++;
-										if ($count1==11) {
-											break;
-										}
-								?>
-								<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3  bds-box" style="margin-bottom:30px;">
-									<a href="?action=tintucdetail&id=<?php echo $set[0] ?>"><div class="product-h">
-										<img src="images/tintuc/<?php echo $set['images_url'];?>">
-									</div></a>
-
-									<h3><a href="?action=tintucdetail&id=<?php echo $set[0] ?>"><?php echo $set[1];?></a></h3>
-									<div class="tintuc_detail">
-										<?php
-											$string = $set['tintuc_detail'];
-											if (strlen($string) > 200) {
-											$trimstring = substr($string, 0, 200). '...';
-											} else {
-											$trimstring = $string;
-											}
-											echo $trimstring;
-
-										?>
-									</div>
-								</div>
-								<?php endwhile;?>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-					<?php include('../view/tintuc-left.php'); ?>
-				</div>
-			</div>
-		</div>
-	</article>
-</section>
 <!-- Home Design -->
 	<section class="home-one home1-overlay home1_bgi1">
 		<div class="container">
@@ -169,23 +69,6 @@
 
 	<!-- Feature Properties -->
 	<section id="feature-property" class="feature-property bgc-f7">
-<!--		<div class="container">-->
-<!--			<div class="row">-->
-<!--				<div class="col-lg-12">-->
-<!--					<a href="#feature-property">-->
-<!--				    	<div class="mouse_scroll">-->
-<!--			        		<div class="icon">-->
-<!--					    		<h4>Scroll Down</h4>-->
-<!--					    		<p>to discover more</p>-->
-<!--			        		</div>-->
-<!--			        		<div class="thumb">-->
-<!--			        			<img src="images/resource/mouse.png" alt="mouse.png">-->
-<!--			        		</div>-->
-<!--				    	</div>-->
-<!--				    </a>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
 		<div class="container ovh">
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
@@ -256,30 +139,35 @@
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="main-title text-center">
-						<h2>Find Properties in These Cities</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<h2>Lĩnh vực của chúng tôi</h2>
+						<p>Những lĩnh vực bất động sản chính</p>
 					</div>
 				</div>
 			</div>
+             <?php
+                $x = new m_product();
+                $menu = $x->get_brand();
+                $cate = $menu -> fetchAll();
+              ?>
 			<div class="row">
-				<div class="col-lg-4 col-xl-4">
+				<div class="col-lg-12 col-xl-12">
 					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="images/property/pc1.jpg" alt="pc1.jpg"></div>
+						<div class="thumb"><img class="img-fluid w100" src="images/property/pc2.jpg" alt="pc1.jpg"></div>
 						<div class="overlay">
 							<div class="details">
-								<h4>Miami</h4>
-								<p>24 Properties</p>
+								<h4><?php echo $cate[0]['product_brand_name'];?></h4>
+								<p>Các dự án nhà ở</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8 col-xl-8">
+                <div class="col-lg-4 col-xl-4">
 					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="images/property/pc2.jpg" alt="pc2.jpg"></div>
+						<div class="thumb"><img class="img-fluid w100" src="images/property/pc4.jpg" alt="pc4.jpg"></div>
 						<div class="overlay">
 							<div class="details">
-								<h4>Los Angeles</h4>
-								<p>18 Properties</p>
+								<h4><?php echo $cate[1][1];?></h4>
+								<p>Các dự án đất đai</p>
 							</div>
 						</div>
 					</div>
@@ -289,19 +177,8 @@
 						<div class="thumb"><img class="img-fluid w100" src="images/property/pc3.jpg" alt="pc3.jpg"></div>
 						<div class="overlay">
 							<div class="details">
-								<h4>New York</h4>
-								<p>89 Properties</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-xl-4">
-					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="images/property/pc4.jpg" alt="pc4.jpg"></div>
-						<div class="overlay">
-							<div class="details">
-								<h4>Florida</h4>
-								<p>47 Properties</p>
+								<h4><?php echo $cate[2][1];?></h4>
+								<p>Các căn hộ, khu trung cư cao cấp</p>
 							</div>
 						</div>
 					</div>
@@ -316,8 +193,8 @@
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="main-title text-center">
-						<h2>Why Choose Us</h2>
-						<p>We provide full service at every step.</p>
+						<h2>Tại sao chọn chúng tôi?</h2>
+						<p>Chúng tôi cung cấp những dịch vụ uy tín và chất lượng nhất.</p>
 					</div>
 				</div>
 			</div>
@@ -328,8 +205,8 @@
 							<span class="flaticon-high-five"></span>
 						</div>
 						<div class="details">
-							<h4>Trusted By Thousands</h4>
-							<p>Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
+							<h4>Lòng tin của khách hàng</h4>
+							<p>Chúng tôi luôn đem lại niềm tin cho khách hàng.</p>
 						</div>
 					</div>
 				</div>
@@ -339,8 +216,8 @@
 							<span class="flaticon-home-1"></span>
 						</div>
 						<div class="details">
-							<h4>Wide Renge Of Properties</h4>
-							<p>Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
+							<h4>Nhu cầu của khách hàng</h4>
+							<p>Chúng tôi luôn sẵn sàng thay đổi để đem lại sự hài lòng cho khách hàng.</p>
 						</div>
 					</div>
 				</div>
@@ -350,8 +227,8 @@
 							<span class="flaticon-profit"></span>
 						</div>
 						<div class="details">
-							<h4>Financing Made Easy</h4>
-							<p>Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
+							<h4>Hỗ trợ trả góp</h4>
+							<p>Khách hàng sẽ sở hữu những căn hộ cao cấp với mức lãi xuất 0% trong 2 năm đầu.</p>
 						</div>
 					</div>
 				</div>
@@ -365,74 +242,32 @@
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="main-title text-center">
-						<h2 class="color-white">Testimonials</h2>
-						<p class="color-white">Here could be a nice sub title</p>
+						<h2 class="color-white">Khách hàng đã mua</h2>
+						<p class="color-white">Những khách hàng thân thiết của chúng tôi</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="testimonial_grid_slider">
+                        <?php
+                                $x = new m_product();
+                                $order = $x->get_orders();
+                                while ($set = $order -> fetch()):
+                              ?>
 						<div class="item">
 							<div class="testimonial_grid">
 								<div class="thumb">
 									<img src="images/testimonial/1.jpg" alt="1.jpg">
 								</div>
 								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
+									<h4><?php echo $set['name'];?></h4>
+									<p><?php echo $set['email'];?></p>
+									<p class="mt25"><?php echo $set['noidung'];?></p>
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="images/testimonial/1.jpg" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="images/testimonial/1.jpg" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="images/testimonial/1.jpg" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="images/testimonial/1.jpg" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
+						 <?php endwhile; ?>
 					</div>
 				</div>
 			</div>
@@ -445,133 +280,46 @@
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="main-title text-center">
-						<h2>Articles & Tips</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<h2>Tin tức</h2>
+						<p>Các tin tức liên quan đến bất động sản.</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
+                <?php
+                    $tintuc = $x->get_tintuclimit();
+                    while ($set = $tintuc -> fetch()):
+
+                ?>
 				<div class="col-md-6 col-lg-4 col-xl-4">
 					<div class="for_blog feat_property">
 						<div class="thumb">
-							<img class="img-whp" src="images/blog/bh1.jpg" alt="bh1.jpg">
+							<img class="img-whp" src="images/tintuc/<?php echo $set['images_url'];?>" alt="bh1.jpg">
 						</div>
 						<div class="details">
 							<div class="tc_content">
-								<p class="text-thm">Business</p>
-								<h4>Skills That You Can Learn In The Real Estate Market</h4>
+								<h4><a href="?action=tintucdetail&id=<?php echo $set[0] ?>"><?php echo $set['tintuc_name'];?></a></h4>
+                                <p class=""><?php
+									$string = $set['tintuc_detail'];
+									if (strlen($string) > 300) {
+									$trimstring = substr($string, 0, 300). '...';
+									} else {
+									$trimstring = $string;
+									}
+									echo $trimstring;
+
+								?></p>
 							</div>
 							<div class="fp_footer">
-								<ul class="fp_meta float-left mb0">
-									<li class="list-inline-item"><a href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></a></li>
-									<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-								</ul>
-								<a class="fp_pdate float-right" href="#">7 August 2019</a>
+								<a class="fp_pdate float-right" href="?action=tintucdetail&id=<?php echo $set[0] ?>">Đọc tiếp >></a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="for_blog feat_property">
-						<div class="thumb">
-							<img class="img-whp" src="images/blog/bh2.jpg" alt="bh2.jpg">
-						</div>
-						<div class="details">
-							<div class="tc_content">
-								<p class="text-thm">Business</p>
-								<h4>Bedroom Colors You’ll Never <br class="dn-1199"> Regret</h4>
-							</div>
-							<div class="fp_footer">
-								<ul class="fp_meta float-left mb0">
-									<li class="list-inline-item"><a href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></a></li>
-									<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-								</ul>
-								<a class="fp_pdate float-right" href="#">7 August 2019</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="for_blog feat_property">
-						<div class="thumb">
-							<img class="img-whp" src="images/blog/bh3.jpg" alt="bh3.jpg">
-						</div>
-						<div class="details">
-							<div class="tc_content">
-								<p class="text-thm">Business</p>
-								<h4>5 Essential Steps for Buying an Investment</h4>
-							</div>
-							<div class="fp_footer">
-								<ul class="fp_meta float-left mb0">
-									<li class="list-inline-item"><a href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></a></li>
-									<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-								</ul>
-								<a class="fp_pdate float-right" href="#">7 August 2019</a>
-							</div>
-						</div>
-					</div>
-				</div>
+                <?php endwhile;?>
 			</div>
 		</div>
 	</section>
 
-	<!-- Our Partners -->
-	<section id="our-partners" class="our-partners">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center">
-						<h2>Our Partners</h2>
-						<p>We only work with the best companies around the globe</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="images/partners/1.png" alt="1.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="images/partners/2.png" alt="2.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="images/partners/3.png" alt="3.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="images/partners/4.png" alt="4.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="images/partners/5.png" alt="5.png">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<!-- Start Partners -->
-	<section class="start-partners bgc-thm pt50 pb50">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="start_partner tac-smd">
-						<h2>Become a Real Estate Agent</h2>
-						<p>We only work with the best companies around the globe</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="parner_reg_btn text-right tac-smd">
-						<a class="btn btn-thm2" href="#">Register Now</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 <?php include('../view/footer.php'); ?>

@@ -97,6 +97,11 @@ class m_product extends connect
 		$sql = "SELECT * FROM tintuc";
 		return $this->query($sql);
 	}
+	public function get_tintuclimit()
+	{
+		$sql = "SELECT * FROM tintuc LIMIT 3";
+		return $this->query($sql);
+	}
 	public function get_tintucId($id)
 	{
 		$sql = "SELECT * FROM tintuc WHERE id=$id";

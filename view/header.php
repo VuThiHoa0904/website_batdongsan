@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="wrapper">
-	<div class="preloader"></div>
+<!--	<div class="preloader"></div>-->
 
 	<!-- Main Header Nav -->
 	<header class="header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu">
@@ -46,7 +46,7 @@
 		        <a href="index.php" class="navbar_brand float-left dn-smd">
 		            <img class="logo1 img-fluid" src="images/header-logo.png" alt="header-logo.png">
 		            <img class="logo2 img-fluid" src="images/header-logo2.png" alt="header-logo2.png">
-		            <span>FindHouse</span>
+		            <span>Thái Dương</span>
 		        </a>
 		        <!-- Responsive Menu Structure-->
 		        <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
@@ -91,7 +91,7 @@
                         echo "<li class='list-inline-item list_s'><a href='index.php?action=register' class='btn flaticon-user' data-toggle='modal' data-target='.bd-example-modal-lg'><span class='dn-lg'>Đăng nhập/Đăng ký</span></a></li>";
                      }
                   ?>
-	                <li class="list-inline-item list_s"><a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Đăng nhập/Đăng ký</span></a></li>
+<!--	                <li class="list-inline-item list_s"><a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Đăng nhập/Đăng ký</span></a></li>-->
 		        </ul>
 		    </nav>
 		</div>
@@ -108,10 +108,10 @@
 		      			<div class="col-lg-12">
 				    		<ul class="sign_up_tab nav nav-tabs" id="myTab" role="tablist">
 							  	<li class="nav-item">
-							    	<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+							    	<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Đăng nhập</a>
 							  	</li>
 							  	<li class="nav-item">
-							    	<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+							    	<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Đăng kí</a>
 							  	</li>
 							</ul>
 		      			</div>
@@ -124,39 +124,31 @@
 					  			</div>
 					  		</div>
 					  		<div class="col-lg-6 col-xl-6">
-								<div class="login_form">
-									<form action="#">
+								<div class="login_form" id="login">
+									<form action="?action=loginaction" method="post">
 										<div class="heading">
-											<h4>Login</h4>
-										</div>
-										<div class="row mt25">
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-fb btn-block"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
-											</div>
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-googl btn-block"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
-											</div>
+											<h4>Đăng nhập</h4>
 										</div>
 										<hr>
 										<div class="input-group mb-2 mr-sm-2">
-										    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="User Name Or Email">
+										    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="User Name Or Email" name="username">
 										    <div class="input-group-prepend">
 										    	<div class="input-group-text"><i class="flaticon-user"></i></div>
 										    </div>
 										</div>
 										<div class="input-group form-group">
-									    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+									    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
 										    <div class="input-group-prepend">
 										    	<div class="input-group-text"><i class="flaticon-password"></i></div>
 										    </div>
 										</div>
 										<div class="form-group custom-control custom-checkbox">
 											<input type="checkbox" class="custom-control-input" id="exampleCheck1">
-											<label class="custom-control-label" for="exampleCheck1">Remember me</label>
-											<a class="btn-fpswd float-right" href="#">Lost your password?</a>
+											<label class="custom-control-label" for="exampleCheck1">Lưu mật khẩu</label>
+											<a class="btn-fpswd float-right" href="#">Quên mật khẩu?</a>
 										</div>
 										<button type="submit" class="btn btn-log btn-block btn-thm">Log In</button>
-										<p class="text-center">Don't have an account? <a class="text-thm" href="#">Register</a></p>
+										<p class="text-center">Bạn chưa có tài khoản? <a class="text-thm" href="?action=register">Đăng ký ngay</a></p>
 									</form>
 								</div>
 					  		</div>
@@ -168,57 +160,42 @@
 					  			</div>
 					  		</div>
 					  		<div class="col-lg-6 col-xl-6">
-								<div class="sign_up_form">
+								<div class="sign_up_form" id="register">
 									<div class="heading">
-										<h4>Register</h4>
+										<h4>Đăng ký</h4>
 									</div>
-									<form action="#">
-										<div class="row">
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
-											</div>
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
-											</div>
-										</div>
+									<form action="?action=registeraction" method="post">
 										<hr>
-										<div class="form-group input-group">
-										    <input type="text" class="form-control" id="exampleInputName" placeholder="User Name">
+                                        <div class="form-group input-group">
+										    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Họ Tên" name="name">
 										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-user"></i></div>
+										    	<div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
 										    </div>
 										</div>
-										<div class="form-group input-group">
-										    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
+                                        <div class="form-group input-group">
+										    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Tên đăng nhập" name="username">
 										    <div class="input-group-prepend">
 										    	<div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
 										    </div>
 										</div>
 										<div class="form-group input-group">
-										    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+										    <input type="text" class="form-control" id="exampleInputName" placeholder="Email" name="email">
 										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-password"></i></div>
+										    	<div class="input-group-text"><i class="flaticon-user"></i></div>
 										    </div>
 										</div>
 										<div class="form-group input-group">
-										    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Re-enter password">
+										    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="pass">
 										    <div class="input-group-prepend">
 										    	<div class="input-group-text"><i class="flaticon-password"></i></div>
 										    </div>
 										</div>
-										<div class="form-group ui_kit_select_search mb0">
-											<select class="selectpicker" data-live-search="true" data-width="100%">
-												<option data-tokens="SelectRole">Single User</option>
-												<option data-tokens="Agent/Agency">Agent</option>
-												<option data-tokens="SingleUser">Multi User</option>
-											</select>
-										</div>
 										<div class="form-group custom-control custom-checkbox">
 											<input type="checkbox" class="custom-control-input" id="exampleCheck2">
-											<label class="custom-control-label" for="exampleCheck2">I have read and accept the Terms and Privacy Policy?</label>
+											<label class="custom-control-label" for="exampleCheck2">Chấp nhận các điều khoản?</label>
 										</div>
-										<button type="submit" class="btn btn-log btn-block btn-thm">Sign Up</button>
-										<p class="text-center">Already have an account? <a class="text-thm" href="#">Log In</a></p>
+										<button type="submit" class="btn btn-log btn-block btn-thm">Đăng ký</button>
+										<p class="text-center">Đã có tài khoản? <a class="text-thm" href="?action=login">Đăng nhập</a></p>
 									</form>
 								</div>
 					  		</div>
@@ -228,7 +205,6 @@
 		    </div>
 		</div>
 	</div>
-
 	<!-- Main Header Nav For Mobile -->
 	<div id="page" class="stylehome1 h0">
 		<div class="mobile-menu">
